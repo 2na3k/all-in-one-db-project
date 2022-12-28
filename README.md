@@ -2,7 +2,7 @@
 I create this for applying for Data Analyst role, which would cover a lot of knowlege fields. And it's fun to do since I can choose the techstack.
 
 ### ERD
-[ERD for the thing](erd.png)
+![ERD for the thing](erd.png)
 
 ### Techstack
 
