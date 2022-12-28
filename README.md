@@ -6,6 +6,7 @@ I create this for applying for Data Analyst role, which would cover a lot of kno
 
 ### Techstack
 - Must have `ipython-sql` (please this is a real magic tho)
+
 ### What I did
 I don't have much time so I will explain my work here:
 - Using Python script to initiate the database, and load the `.csv` files as tables.
