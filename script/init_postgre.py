@@ -1,12 +1,13 @@
-from sqlalchemy import create_engine
-from sqlalchemy import text
+'''For the usecase of using Docker, run this'''
+
+from sqlalchemy import create_engine, text
 import pandas as pd
 
 def get_and_load(cnn):
     # Create database
-    cnn\
-        .execution_options(isolation_level="AUTOCOMMIT")\
-        .execute("CREATE database sales_db")
+    # cnn\
+    #     .execution_options(isolation_level="AUTOCOMMIT")\
+    #     .execute("CREATE database sales_db")
 
     # Load .csv files onto database
     names = ["accounts", "orders", "region", "sales_reps", "web_events"]
@@ -19,18 +20,18 @@ def get_and_load(cnn):
             print(f"Just got error in adding {name} to the database. Error: {error}")
 
     # Create connection: Alter tables
-    with open("connections.sql") as file:
+    with open("relationships.sql") as file:
         try: 
             query = text(file.read())
             cnn.execute(query)
-        except:
-            print("You're done")
+        except Exception as ex:
+            print(f"You're done: {ex}")
 def main():
     '''
     Logging in the case of having no other user so imma put the things right her 
     '''
     try:
-        engine = create_engine(f'postgresql://root:root@localhost:5432/')
+        engine = create_engine(f'postgresql://root:root@localhost:5432/sales_db')
         get_and_load(engine)
     except Exception as ex:
         print(f"Error: {ex}")
