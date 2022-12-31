@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+from sqlalchemy import text
 import pandas as pd
 
 def get_and_load(cnn):
@@ -18,6 +19,12 @@ def get_and_load(cnn):
             print(f"Just got error in adding {name} to the database. Error: {error}")
 
     # Create connection: Alter tables
+    with open("connections.sql") as file:
+        try: 
+            query = text(file.read())
+            cnn.execute(query)
+        except:
+            print("You're done")
 def main():
     '''
     Logging in the case of having no other user so imma put the things right her 
@@ -27,8 +34,6 @@ def main():
         get_and_load(engine)
     except Exception as ex:
         print(f"Error: {ex}")
-    finally:
-        engine.dispose()
 
 if __name__ == "__main__":
     main()
