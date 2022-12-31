@@ -5,7 +5,20 @@ I create this for applying for Data Analyst role, which would cover a lot of kno
 ![ERD for the thing](erd.png)
 
 ### Techstack
-- Must have `ipython-sql` (please this is a real magic tho)
+Overall I use:
+- Docker for creating PostgreSQL container, in the port `localhost:5432`.
+- DuckDB: For SQL interface to query from both SQLite and PostgreSQL.
+- SQLAlchemy for creating ingestion pipeline to the database.
+- PowerBI: Porting directly from Postgres containter for data visualization.
+
+
+
+### How it works
+- For SQLite: Check the `script/init_lite.py` for the ingestion pipeline and `notebook/queries.ipynb` for SQL queries and visualization with Seaborns. Data will be saved in `sales.db` file.
+- For PostgreSQL: From the root of the directory, run `docker compose up`, and run the `script/init_postgres.py` to load the whole database.
+- For visualization: Check the `sales_dashboard.pbix` file (using PowerBI).
+
+To install the dependencies, run 'pip install -r requirements.txt' in the root folder.
 
 ### What I did
 I don't have much time so I will explain my work here:
